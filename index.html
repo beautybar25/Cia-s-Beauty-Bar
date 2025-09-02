@@ -1,0 +1,2026 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cia's Beauty Bar |</title>
+    <link rel="icon" type="image/png" href="C:\Users\lebea\OneDrive\Desktop\Cia\Untitled design.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Montserrat:wght@300;400;500;600&display=swap">
+    <!-- EmailJS Client -->
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <style>
+        :root {
+            --amber: #FFB300; /* Warm amber/orange-yellow */
+            --dark-amber: #FF8F00;
+            --light-amber: #FFE082;
+            --rock-grey: #2C3E50; /* Dark rock grey */
+            --medium-grey: #546E7A;
+            --light-grey: #ECEFF1;
+            --white: #FFFFFF;
+            --black: #212121;
+            --shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            --transition: all 0.3s ease;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            background-color: var(--white);
+            color: var(--rock-grey);
+            line-height: 1.6;
+            font-family: 'Montserrat', sans-serif;
+            overflow-x: hidden;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .btn {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--amber), var(--dark-amber));
+            color: var(--white);
+            padding: 12px 30px;
+            border-radius: 30px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            text-decoration: none;
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+            box-shadow: var(--shadow);
+        }
+        
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 15px rgba(255, 179, 0, 0.4);
+        }
+        
+        .btn-outline {
+            background: transparent;
+            border: 2px solid var(--amber);
+            color: var(--amber);
+        }
+        
+        .btn-outline:hover {
+            background: var(--amber);
+            color: var(--white);
+        }
+        
+        /* Header Styles */
+        header {
+            background: var(--rock-grey);
+            color: var(--white);
+            padding: 15px 0;
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        .header-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .header-left {
+            display: flex;
+            align-items: center;
+            width: 100%;
+            justify-content: space-between;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo-text {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+        
+        .logo-highlight {
+            color: var(--amber);
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+            justify-content: center; /* Add this line */
+            padding-left: 0;
+        }
+        
+        nav li {
+            margin-left: 30px;
+        }
+        
+        nav a {
+            color: var(--white);
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition);
+            position: relative;
+            padding: 5px 0;
+        }
+        
+        nav a:hover {
+            color: var(--amber);
+        }
+        
+        nav a:after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background-color: var(--amber);
+            transition: var(--transition);
+        }
+        
+        nav a:hover:after {
+            width: 100%;
+        }
+        
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--white);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+        
+        /* Hero Section */
+        .hero {
+            position: relative;
+            height: 100vh;
+            overflow: hidden;
+            color: var(--white);
+            text-align: center;
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('logo bg cia.jpg') center/cover;
+            padding: 100px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+    /* Gallery Styles */
+    .gallery-container {
+        overflow: hidden;
+        margin-top: 30px;
+        position: relative;
+        width: 100%;
+        height: 280px;
+    }
+
+    .gallery-track {
+        display: flex;
+        animation: infiniteSlide 20s linear infinite;
+        width: max-content;
+    }
+
+    @keyframes infiniteSlide {
+        0% {
+            transform: translateX(0);
+        }
+        100% {
+            transform: translateX(calc(-320px * 7));
+        }
+    }
+
+    .gallery-item {
+        min-width: 300px;
+        max-width: 300px;
+        height: 260px;
+        margin: 0 10px;
+        border-radius: 16px;
+        overflow: hidden;
+        position: relative;
+        flex-shrink: 0;
+        box-shadow: var(--shadow);
+        transition: transform 0.3s ease;
+    }
+
+    .gallery-item:hover {
+        transform: translateY(-5px);
+    }
+
+    .gallery-item img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.3s ease;
+    }
+
+    .gallery-item:hover img {
+        transform: scale(1.05);
+    }
+
+    .gallery-overlay {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background: linear-gradient(transparent, rgba(44, 62, 80, 0.9));
+        color: var(--white);
+        padding: 20px;
+        transform: translateY(100%);
+        transition: transform 0.3s ease;
+    }
+
+    .gallery-item:hover .gallery-overlay {
+        transform: translateY(0);
+    }
+
+    .gallery-overlay h3 {
+        font-size: 1.2rem;
+        margin-bottom: 5px;
+        color: var(--amber);
+    }
+
+    .gallery-overlay p {
+        font-size: 0.9rem;
+        opacity: 0.9;
+    }
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+        
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.8rem;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            line-height: 1.2;
+        }
+        
+        .hero h1 span {
+            color: var(--amber);
+            display: block;
+        }
+        
+        .hero p {
+            font-size: 1.3rem;
+            max-width: 700px;
+            margin: 0 auto 40px;
+            font-weight: 300;
+        }
+        
+        .appointment-note {
+            background-color: var(--amber);
+            color: var(--rock-grey);
+            display: inline-block;
+            padding: 12px 30px;
+            border-radius: 30px;
+            font-weight: 700;
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin: 20px 0;
+            box-shadow: var(--shadow);
+        }
+        
+        /* Section Styling */
+        section {
+            padding: 100px 0;
+        }
+        
+        /* Services Section Background */
+        .services {
+            background: linear-gradient(rgba(255, 255, 255, 0.97), rgba(255, 255, 255, 0.97)), url('WhatsApp Image 2025-07-22 at 10.02.15_57948b57.jpg') center/cover;
+            position: relative;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+            position: relative;
+        }
+        
+        .section-title h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.8rem;
+            text-transform: uppercase;
+            display: inline-block;
+            background: linear-gradient(to right, var(--amber), var(--dark-amber));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            padding-bottom: 15px;
+        }
+        
+        .section-title h2:after {
+            content: "";
+            position: absolute;
+            width: 100px;
+            height: 4px;
+            background: var(--amber);
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        .section-subtitle {
+            text-align: center;
+            max-width: 700px;
+            margin: 20px auto 50px;
+            font-size: 1.1rem;
+            color: var(--medium-grey);
+        }
+        
+        /* Price Grid */
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .price-card {
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            border: 1px solid var(--light-grey);
+            position: relative;
+            min-height: 400px;
+        }
+        
+        .price-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        /* Default background for cards without specific classes */
+        .price-card {
+            background: var(--white);
+        }
+        
+        /* Service-specific backgrounds */
+        .price-card.acrylic {
+            background: linear-gradient(rgba(44, 62, 80, 0.85), rgba(44, 62, 80, 0.85)), url('nail1.webp') center/cover;
+        }
+        
+        .price-card.french {
+            background: linear-gradient(rgba(44, 62, 80, 0.85), rgba(44, 62, 80, 0.85)), url('nail2.webp') center/cover;
+        }
+        
+        .price-card.ombre {
+            background: linear-gradient(rgba(44, 62, 80, 0.85), rgba(44, 62, 80, 0.85)), url('nail3.webp') center/cover;
+        }
+        
+        .price-card.combo {
+            background: linear-gradient(rgba(44, 62, 80, 0.85), rgba(44, 62, 80, 0.85)), url('nail4.webp') center/cover;
+        }
+        
+        .price-card.eyelashes {
+            background: linear-gradient(rgba(44, 62, 80, 0.85), rgba(44, 62, 80, 0.85)), url('person makeup.webp') center/cover;
+        }
+        
+        .price-card.makeup {
+            background: linear-gradient(rgba(44, 62, 80, 0.85), rgba(44, 62, 80, 0.85)), url('Pretty makeup.webp') center/cover;
+        }
+        
+        .price-card.other-services {
+            background: linear-gradient(rgba(44, 62, 80, 0.85), rgba(44, 62, 80, 0.85)), url('nail5.webp') center/cover;
+        }
+        
+        .price-header {
+            background: linear-gradient(135deg, rgba(255, 179, 0, 0.9), rgba(255, 143, 0, 0.9));
+            color: var(--white);
+            padding: 25px 20px;
+            text-align: center;
+            backdrop-filter: blur(5px);
+        }
+        
+        .price-header h3 {
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+            letter-spacing: 1px;
+        }
+        
+        .price-content {
+            padding: 30px;
+            color: var(--white);
+            margin: 10px;
+            border-radius: 8px;
+        }
+        
+        .price-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 12px 0;
+            border-bottom: 1px dashed var(--light-grey);
+        }
+        
+        .price-item:last-child {
+            border-bottom: none;
+        }
+        
+        .price-item .name {
+            font-weight: 500;
+        }
+        
+        .price-item .cost {
+            color: var(--amber);
+            font-weight: 700;
+            font-size: 1.1rem;
+        }
+        
+        .price-item .name {
+            color: var(--white);
+        }
+        
+        .service-highlight {
+            background: rgba(255, 179, 0, 0.2);
+            border: 1px solid var(--amber);
+            color: var(--white);
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 15px;
+            font-weight: 500;
+            text-align: center;
+            backdrop-filter: blur(5px);
+        }
+        
+        /* Gallery Section */
+        .gallery {
+            background: linear-gradient(rgba(236, 239, 241, 0.95), rgba(236, 239, 241, 0.95)), url('Nails.jpg') center/cover;
+            position: relative;
+        }
+        
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 25px;
+        }
+        
+        .gallery-item {
+            border-radius: 10px;
+            overflow: hidden;
+            position: relative;
+            height: 280px;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+        
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+        
+        .gallery-item:hover {
+            transform: translateY(-5px);
+        }
+        
+        .gallery-item:hover img {
+            transform: scale(1.05);
+        }
+        
+        .gallery-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(44, 62, 80, 0.85);
+            color: var(--white);
+            padding: 15px;
+            transform: translateY(100%);
+            transition: var(--transition);
+        }
+        
+        .gallery-item:hover .gallery-caption {
+            transform: translateY(0);
+        }
+        
+        /* Booking Section */
+        .booking {
+            background: linear-gradient(135deg, rgba(255, 179, 0, 0.05) 0%, rgba(255, 143, 0, 0.05) 100%);
+        }
+        
+        .booking-container {
+            background: var(--white);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+        }
+        
+        .booking-image {
+            background: url('Pretty makeup.webp') center/cover;
+            min-height: 500px;
+        }
+        
+        .booking-form {
+            padding: 50px;
+        }
+        
+        .form-group {
+            margin-bottom: 25px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: var(--rock-grey);
+        }
+        
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 14px;
+            border: 1px solid var(--light-grey);
+            border-radius: 8px;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1rem;
+            transition: var(--transition);
+        }
+        
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            border-color: var(--amber);
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(255, 179, 0, 0.2);
+        }
+        
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+        
+        /* Contact Section */
+        .contact {
+            background: linear-gradient(rgba(44, 62, 80, 0.92), rgba(44, 62, 80, 0.92)), url('logo bg cia.jpg') center/cover;
+            color: var(--white);
+            position: relative;
+        }
+        
+        .contact-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            margin-top: 40px;
+        }
+        
+        .contact-card {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+            padding: 30px;
+            text-align: center;
+            transition: var(--transition);
+        }
+        
+        .contact-card:hover {
+            background: rgba(255, 179, 0, 0.1);
+            transform: translateY(-5px);
+        }
+        
+        .contact-icon {
+            background: var(--amber);
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            color: var(--white);
+            font-size: 1.8rem;
+        }
+        
+        .contact-card h3 {
+            margin-bottom: 15px;
+            color: var(--white);
+            font-size: 1.4rem;
+        }
+        
+        .contact-card p {
+            margin-bottom: 10px;
+            opacity: 0.9;
+        }
+        
+        .contact-card a {
+            color: var(--amber);
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+        }
+        
+        .contact-card a:hover {
+            color: var(--light-amber);
+            text-decoration: underline;
+        }
+        
+        /* Footer */
+        footer {
+            background: var(--black);
+            color: var(--white);
+            padding: 60px 0 20px;
+            text-align: center;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            text-align: left;
+            margin-bottom: 50px;
+        }
+        
+        .footer-column h3 {
+            color: var(--amber);
+            margin-bottom: 25px;
+            font-size: 1.4rem;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .footer-column h3:after {
+            content: '';
+            position: absolute;
+            width: 50px;
+            height: 2px;
+            background: var(--amber);
+            bottom: 0;
+            left: 0;
+        }
+        
+        .footer-column p, .footer-column li {
+            margin-bottom: 15px;
+            opacity: 0.8;
+        }
+        
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column a {
+            color: var(--light-grey);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+        
+        .footer-column a:hover {
+            color: var(--amber);
+            padding-left: 5px;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .social-links a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: var(--white);
+            font-size: 1.2rem;
+            transition: var(--transition);
+        }
+        
+        .social-links a:hover {
+            background: var(--amber);
+            transform: translateY(-5px);
+        }
+        
+        .copyright {
+            margin-top: 60px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.9rem;
+            opacity: 0.6;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .booking-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .booking-image {
+                min-height: 300px;
+            }
+            
+            .hero h1 {
+                font-size: 3rem;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            nav ul {
+                display: none;
+                position: absolute;
+                top: 70px;
+                left: 0;
+                right: 0;
+                background: var(--rock-grey);
+                flex-direction: column;
+                padding: 20px;
+                box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            }
+            
+            nav ul.active {
+                display: flex;
+            }
+            
+            nav li {
+                margin: 15px 0;
+            }
+            
+            .hero {
+    position: relative;
+    height: 100vh;
+    color: var(--white);
+    text-align: center;
+    background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('logo bg cia.jpg') center/cover;
+    padding: 100px 20px;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 40px;
+    background: rgba(0,0,0,0.5);
+    border-radius: 15px;
+    backdrop-filter: blur(5px);
+}
+            
+            .section-title h2 {
+                font-size: 2.2rem;
+            }
+            
+            .form-row {
+                grid-template-columns: 1fr;
+                gap: 0;
+            }
+            
+        }
+
+        /* Scroll Animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease-out;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .slide-left {
+            opacity: 0;
+            transform: translateX(-50px);
+            transition: all 0.8s ease-out;
+        }
+
+        .slide-left.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .slide-right {
+            opacity: 0;
+            transform: translateX(50px);
+            transition: all 0.8s ease-out;
+        }
+
+        .slide-right.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .scale-up {
+            opacity: 0;
+            transform: scale(0.8);
+            transition: all 0.8s ease-out;
+        }
+
+        .scale-up.visible {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        .stagger-1 { transition-delay: 0.1s; }
+        .stagger-2 { transition-delay: 0.2s; }
+        .stagger-3 { transition-delay: 0.3s; }
+        .stagger-4 { transition-delay: 0.4s; }
+        .stagger-5 { transition-delay: 0.5s; }
+        .stagger-6 { transition-delay: 0.6s; }
+
+        /* Hero Animation */
+        .hero {
+            transition: opacity 0.3s ease-out;
+        }
+
+        .hero-content {
+            animation: heroFadeIn 1.5s ease-out;
+        }
+
+        @keyframes heroFadeIn {
+            0% {
+                opacity: 0;
+                transform: translateY(50px) scale(0.9);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        /* Hero fade out on scroll */
+        .hero.fade-out {
+            opacity: 0.3;
+        }
+
+        /* Section animations when visible */
+        .section-title.fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .section-title.fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+            animation: titleWave 0.8s ease-out;
+        }
+
+        @keyframes titleWave {
+            0% { transform: translateY(30px); opacity: 0; }
+            60% { transform: translateY(-5px); opacity: 0.8; }
+            100% { transform: translateY(0); opacity: 1; }
+        }
+
+        /* Booking Form Enhancements */
+        .booking-form .btn {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .booking-form .btn.loading {
+            pointer-events: none;
+            opacity: 0.7;
+        }
+
+        .loading-spinner {
+            display: none;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 20px;
+            height: 20px;
+            border: 2px solid transparent;
+            border-top: 2px solid var(--white);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        .btn.loading .loading-spinner {
+            display: block;
+        }
+
+        .btn.loading .btn-text {
+            opacity: 0;
+        }
+
+        @keyframes spin {
+            0% { transform: translate(-50%, -50%) rotate(0deg); }
+            100% { transform: translate(-50%, -50%) rotate(360deg); }
+        }
+
+        .form-message {
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            display: none;
+            font-weight: 500;
+        }
+
+        .form-message.success {
+            background: linear-gradient(135deg, #4CAF50, #45a049);
+            color: white;
+            border-left: 4px solid #2E7D32;
+        }
+
+        .form-message.error {
+            background: linear-gradient(135deg, #f44336, #d32f2f);
+            color: white;
+            border-left: 4px solid #c62828;
+        }
+
+        .form-message.show {
+            display: block;
+            animation: slideDown 0.5s ease-out;
+        }
+
+        @keyframes slideDown {
+            0% {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Catalogue Styles */
+        .catalogue-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .catalogue-section {
+            background: var(--white);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            border: 1px solid rgba(255, 179, 0, 0.1);
+        }
+
+        .catalogue-section:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(255, 179, 0, 0.15);
+        }
+
+        .catalogue-header {
+            background: linear-gradient(135deg, var(--amber), var(--dark-amber));
+            color: var(--white);
+            padding: 20px 25px;
+            text-align: center;
+        }
+
+        .catalogue-header h3 {
+            font-size: 1.4rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            margin: 0;
+            text-transform: uppercase;
+        }
+
+        .catalogue-header i {
+            margin-right: 10px;
+            font-size: 1.2rem;
+        }
+
+        .catalogue-content {
+            padding: 25px;
+        }
+
+        .service-category {
+            margin-bottom: 25px;
+        }
+
+        .service-category:last-child {
+            margin-bottom: 0;
+        }
+
+        .service-category h4 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--rock-grey);
+            margin-bottom: 15px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid var(--light-grey);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .price-list {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .price-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 8px 0;
+            border-bottom: 1px dashed rgba(255, 179, 0, 0.2);
+            transition: var(--transition);
+        }
+
+        .price-row:last-child {
+            border-bottom: none;
+        }
+
+        .price-row:hover {
+            background: rgba(255, 179, 0, 0.05);
+            padding-left: 10px;
+            border-radius: 5px;
+        }
+
+        .price-row span:first-child {
+            font-weight: 500;
+            color: var(--medium-grey);
+        }
+
+        .price-row .price {
+            font-weight: 700;
+            font-size: 1.1rem;
+            color: var(--amber);
+            background: rgba(255, 179, 0, 0.1);
+            padding: 4px 12px;
+            border-radius: 20px;
+            min-width: 60px;
+            text-align: center;
+        }
+
+        .catalogue-note {
+            text-align: center;
+            margin-top: 50px;
+            padding: 30px;
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 179, 0, 0.2);
+        }
+
+        .catalogue-note p {
+            font-size: 1.1rem;
+            color: var(--medium-grey);
+            margin-bottom: 20px;
+            font-style: italic;
+        }
+
+        .catalogue-note i {
+            color: var(--amber);
+            margin-right: 8px;
+        }
+
+        /* Responsive Catalogue */
+        @media (max-width: 768px) {
+            .catalogue-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            
+            .catalogue-header {
+                padding: 15px 20px;
+            }
+            
+            .catalogue-header h3 {
+                font-size: 1.2rem;
+            }
+            
+            .catalogue-content {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+   <header>
+    <div class="header-content">
+        <div class="header-left">
+            <div class="logo">
+                <img src="logo no bg cia.png" alt="Cia's Beauty Bar Logo" style="height:89px; margin-right:27px;">
+                <div class="logo-text">CIA'S <span class="logo-highlight">BEAUTY BAR</span></div>
+            </div>
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+        <nav>
+            <ul id="navMenu">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#catalogue">Catalogue</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#gallery">Gallery</a></li>
+                <li><a href="#booking">Book Now</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </div>
+</header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+       <div class="hero-content">
+    <h1>ELEGANT <span>BEAUTY EXPERIENCE</span></h1>
+        <p>Premium nail care, eyelash extensions, and beauty treatments</p>
+        <div class="appointment-note">N.B Strictly by Appointment Only</div>
+        <a href="#booking" class="btn">Book Appointment</a>
+</div>
+    </section>
+
+    <!-- Service Catalogue Section -->
+    <section class="catalogue" id="catalogue" style="padding: 80px 0; background: linear-gradient(135deg, rgba(255, 179, 0, 0.03) 0%, rgba(255, 143, 0, 0.03) 100%);">
+        <div class="container">
+            <div class="section-title fade-in">
+                <h2>Service Catalogue</h2>
+            </div>
+            <div class="section-subtitle">
+                Complete pricing guide for all our premium beauty services
+            </div>
+            
+            <div class="catalogue-grid">
+                <!-- Acrylic Nails Section -->
+                <div class="catalogue-section fade-in stagger-1">
+                    <div class="catalogue-header">
+                        <h3><i class="fas fa-gem"></i> ACRYLIC NAILS</h3>
+                    </div>
+                    <div class="catalogue-content">
+                        <div class="service-category">
+                            <h4>Plain Acrylic</h4>
+                            <div class="price-list">
+                                <div class="price-row">
+                                    <span>Short</span>
+                                    <span class="price">R150</span>
+                                </div>
+                                <div class="price-row">
+                                    <span>Medium</span>
+                                    <span class="price">R180</span>
+                                </div>
+                                <div class="price-row">
+                                    <span>Long / X-Large</span>
+                                    <span class="price">R200</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="service-category">
+                            <h4>Acrylic French</h4>
+                            <div class="price-list">
+                                <div class="price-row">
+                                    <span>Short</span>
+                                    <span class="price">R190</span>
+                                </div>
+                                <div class="price-row">
+                                    <span>Medium</span>
+                                    <span class="price">R200</span>
+                                </div>
+                                <div class="price-row">
+                                    <span>Long / X-Large</span>
+                                    <span class="price">R300</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="service-category">
+                            <h4>Acrylic Ombre</h4>
+                            <div class="price-list">
+                                <div class="price-row">
+                                    <span>Short</span>
+                                    <span class="price">R200</span>
+                                </div>
+                                <div class="price-row">
+                                    <span>Medium</span>
+                                    <span class="price">R250</span>
+                                </div>
+                                <div class="price-row">
+                                    <span>Long / X-Large</span>
+                                    <span class="price">R300</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Combo Packages Section -->
+                <div class="catalogue-section fade-in stagger-2">
+                    <div class="catalogue-header">
+                        <h3><i class="fas fa-sparkles"></i> COMBO PACKAGES</h3>
+                    </div>
+                    <div class="catalogue-content">
+                        <div class="service-category">
+                            <h4>Nails Combo</h4>
+                            <div class="price-list">
+                                <div class="price-row">
+                                    <span>Short/Medium + Pedi</span>
+                                    <span class="price">R350</span>
+                                </div>
+                                <div class="price-row">
+                                    <span>Long/X-Long + Pedi</span>
+                                    <span class="price">R450</span>
+                                </div>
+                                <div class="price-row">
+                                    <span>Gel Mani + Gel Pedi</span>
+                                    <span class="price">R220</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Eyelashes Section -->
+                <div class="catalogue-section fade-in stagger-3">
+                    <div class="catalogue-header">
+                        <h3><i class="fas fa-eye"></i> INDIVIDUAL EYELASHES</h3>
+                    </div>
+                    <div class="catalogue-content">
+                        <div class="service-category">
+                            <div class="price-list">
+                                <div class="price-row">
+                                    <span>Classic</span>
+                                    <span class="price">R200</span>
+                                </div>
+                                <div class="price-row">
+                                    <span>Volume</span>
+                                    <span class="price">R250</span>
+                                </div>
+                                <div class="price-row">
+                                    <span>Mega Volume</span>
+                                    <span class="price">R300</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Other Services Section -->
+                <div class="catalogue-section fade-in stagger-4">
+                    <div class="catalogue-header">
+                        <h3><i class="fas fa-hand-sparkles"></i> OTHER SERVICES</h3>
+                    </div>
+                    <div class="catalogue-content">
+                        <div class="service-category">
+                            <div class="price-list">
+                                <div class="price-row">
+                                    <span>Gel Manicure</span>
+                                    <span class="price">R120</span>
+                                </div>
+                                <div class="price-row">
+                                    <span>Gel Pedicure</span>
+                                    <span class="price">R100</span>
+                                </div>
+                                <div class="price-row">
+                                    <span>Pedicure</span>
+                                    <span class="price">R150</span>
+                                </div>
+                                <div class="price-row">
+                                    <span>Buff & Shine + Design</span>
+                                    <span class="price">R100</span>
+                                </div>
+                                <div class="price-row">
+                                    <span>Soak Off</span>
+                                    <span class="price">R80</span>
+                                </div>
+                                <div class="price-row">
+                                    <span>Nail Art (per nail)</span>
+                                    <span class="price">R5</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="catalogue-note">
+                <p><i class="fas fa-info-circle"></i> All prices are subject to consultation. Special packages and group bookings available.</p>
+                <a href="#booking" class="btn">Book Your Service</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Beauty Gallery Section -->
+    <section class="gallery-section" style="padding: 60px 0; background-color: var(--light-grey);">
+        <div class="container">
+            <div class="section-title fade-in">
+                <h2>Beauty Masterpieces</h2>
+            </div>
+            <div class="gallery-container">
+                <div class="gallery-track">
+                    <!-- Original set -->
+                    <div class="gallery-item">
+                        <img src="nail1.webp" alt="Elegant Nail Art">
+                        <div class="gallery-overlay">
+                            <h3>Elegant Design</h3>
+                            <p>Sophisticated nail artistry</p>
+                        </div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="nail2.webp" alt="French Manicure">
+                        <div class="gallery-overlay">
+                            <h3>Classic French</h3>
+                            <p>Timeless elegance</p>
+                        </div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="nail3.webp" alt="Colorful Nails">
+                        <div class="gallery-overlay">
+                            <h3>Vibrant Colors</h3>
+                            <p>Bold and beautiful</p>
+                        </div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="nail4.webp" alt="Glitter Nails">
+                        <div class="gallery-overlay">
+                            <h3>Glamour Finish</h3>
+                            <p>Sparkling perfection</p>
+                        </div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="nail5.webp" alt="Artistic Design">
+                        <div class="gallery-overlay">
+                            <h3>Artistic Flair</h3>
+                            <p>Creative expression</p>
+                        </div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="nails6.webp" alt="Professional Nails">
+                        <div class="gallery-overlay">
+                            <h3>Professional Look</h3>
+                            <p>Business ready</p>
+                        </div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="nails7.webp" alt="Trendy Nails">
+                        <div class="gallery-overlay">
+                            <h3>Latest Trends</h3>
+                            <p>Fashion forward</p>
+                        </div>
+                    </div>
+                    <!-- Duplicate set for seamless loop -->
+                    <div class="gallery-item">
+                        <img src="nail1.webp" alt="Elegant Nail Art">
+                        <div class="gallery-overlay">
+                            <h3>Elegant Design</h3>
+                            <p>Sophisticated nail artistry</p>
+                        </div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="nail2.webp" alt="French Manicure">
+                        <div class="gallery-overlay">
+                            <h3>Classic French</h3>
+                            <p>Timeless elegance</p>
+                        </div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="nail3.webp" alt="Colorful Nails">
+                        <div class="gallery-overlay">
+                            <h3>Vibrant Colors</h3>
+                            <p>Bold and beautiful</p>
+                        </div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="nail4.webp" alt="Glitter Nails">
+                        <div class="gallery-overlay">
+                            <h3>Glamour Finish</h3>
+                            <p>Sparkling perfection</p>
+                        </div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="nail5.webp" alt="Artistic Design">
+                        <div class="gallery-overlay">
+                            <h3>Artistic Flair</h3>
+                            <p>Creative expression</p>
+                        </div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="nails6.webp" alt="Professional Nails">
+                        <div class="gallery-overlay">
+                            <h3>Professional Look</h3>
+                            <p>Business ready</p>
+                        </div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="nails7.webp" alt="Trendy Nails">
+                        <div class="gallery-overlay">
+                            <h3>Latest Trends</h3>
+                            <p>Fashion forward</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Nails Services -->
+    <section class="services" id="services">
+        <div class="container">
+            <div class="section-title fade-in">
+                <h2>Our Services</h2>
+            </div>
+            <div class="section-subtitle">
+                Experience premium beauty services with our expert technicians in a relaxing environment
+            </div>
+            
+            <div class="pricing-grid">
+                <!-- Plain Acrylic -->
+                <div class="price-card acrylic fade-in stagger-1">
+                    <div class="price-header">
+                        <h3>PLAIN ACRYLIC</h3>
+                    </div>
+                    <div class="price-content">
+                        <div class="price-item">
+                            <span class="name">Short</span>
+                            <span class="cost">R150</span>
+                        </div>
+                        <div class="price-item">
+                            <span class="name">Medium</span>
+                            <span class="cost">R180</span>
+                        </div>
+                        <div class="price-item">
+                            <span class="name">Long / X-Large</span>
+                            <span class="cost">R200</span>
+                        </div>
+                        <div class="service-highlight">
+                            Perfect for everyday elegance
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Acrylic French -->
+                <div class="price-card french fade-in stagger-2">
+                    <div class="price-header">
+                        <h3>ACRYLIC FRENCH</h3>
+                    </div>
+                    <div class="price-content">
+                        <div class="price-item">
+                            <span class="name">Short</span>
+                            <span class="cost">R190</span>
+                        </div>
+                        <div class="price-item">
+                            <span class="name">Medium</span>
+                            <span class="cost">R200</span>
+                        </div>
+                        <div class="price-item">
+                            <span class="name">Long / X-Large</span>
+                            <span class="cost">R300</span>
+                        </div>
+                        <div class="service-highlight">
+                            Classic sophistication at its finest
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Acrylic Ombre -->
+                <div class="price-card ombre fade-in stagger-3">
+                    <div class="price-header">
+                        <h3>ACRYLIC OMBRE</h3>
+                    </div>
+                    <div class="price-content">
+                        <div class="price-item">
+                            <span class="name">Short</span>
+                            <span class="cost">R200</span>
+                        </div>
+                        <div class="price-item">
+                            <span class="name">Medium</span>
+                            <span class="cost">R250</span>
+                        </div>
+                        <div class="price-item">
+                            <span class="name">Long / X-Large</span>
+                            <span class="cost">R300</span>
+                        </div>
+                        <div class="service-highlight">
+                            Stunning gradient effects and artistic flair
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Nails Combo -->
+                <div class="price-card combo fade-in stagger-4">
+                    <div class="price-header">
+                        <h3>NAILS COMBO</h3>
+                    </div>
+                    <div class="price-content">
+                        <div class="price-item">
+                            <span class="name">Short/Medium + Pedi</span>
+                            <span class="cost">R350</span>
+                        </div>
+                        <div class="price-item">
+                            <span class="name">Long/X-Long + Pedi</span>
+                            <span class="cost">R450</span>
+                        </div>
+                        <div class="price-item">
+                            <span class="name">Gel Mani + Gel Pedi</span>
+                            <span class="cost">R220</span>
+                        </div>
+                        <div class="service-highlight">
+                            Complete hand and foot pamper packages
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Eyelashes -->
+                <div class="price-card eyelashes fade-in stagger-5">
+                    <div class="price-header">
+                        <h3>INDIVIDUAL EYELASHES</h3>
+                    </div>
+                    <div class="price-content">
+                        <div class="price-item">
+                            <span class="name">Classic</span>
+                            <span class="cost">R200</span>
+                        </div>
+                        <div class="price-item">
+                            <span class="name">Volume</span>
+                            <span class="cost">R250</span>
+                        </div>
+                        <div class="price-item">
+                            <span class="name">Mega Volume</span>
+                            <span class="cost">R300</span>
+                        </div>
+                        <div class="service-highlight">
+                            Professional lash application with premium products
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Hair & Makeup -->
+                <div class="price-card makeup fade-in stagger-6">
+                    <div class="price-header">
+                        <h3>HAIR & MAKEUP</h3>
+                    </div>
+                    <div class="price-content">
+                        <div class="price-item">
+                            <span class="name">Twists and Braids</span>
+                            <span class="cost">R350</span>
+                        </div>
+                        <div class="price-item">
+                            <span class="name">Makeup Application</span>
+                            <span class="cost">R300</span>
+                        </div>
+                        <div class="price-item">
+                            <span class="name">Hair Styling</span>
+                            <span class="cost">R250</span>
+                        </div>
+                        <div class="service-highlight">
+                            Complete makeover packages available
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Other Services -->
+                <div class="price-card other-services scale-up stagger-3">
+                    <div class="price-header">
+                        <h3>OTHER SERVICES</h3>
+                    </div>
+                    <div class="price-content">
+                        <div class="price-item">
+                            <span class="name">Gel Manicure</span>
+                            <span class="cost">R120</span>
+                        </div>
+                        <div class="price-item">
+                            <span class="name">Gel Pedicure</span>
+                            <span class="cost">R100</span>
+                        </div>
+                        <div class="price-item">
+                            <span class="name">Pedicure</span>
+                            <span class="cost">R150</span>
+                        </div>
+                        <div class="price-item">
+                            <span class="name">Buff & Shine + Design</span>
+                            <span class="cost">R100</span>
+                        </div>
+                        <div class="price-item">
+                            <span class="name">Soak Off</span>
+                            <span class="cost">R80</span>
+                        </div>
+                        <div class="price-item">
+                            <span class="name">Nail Art (per nail)</span>
+                            <span class="cost">R5</span>
+                        </div>
+                        <div class="service-highlight">
+                            Essential nail care and maintenance services
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section class="gallery" id="gallery">
+        <div class="container">
+            <div class="section-title fade-in">
+                <h2>Our Gallery</h2>
+            </div>
+            <div class="section-subtitle">
+                Explore our exquisite work and beautiful transformations
+            </div>
+            
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <img src="C:\Users\lebea\OneDrive\Desktop\Cia\nail4.webp" alt="Nail Design">
+                    <div class="gallery-caption">Acrylic French Design</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="C:\Users\lebea\OneDrive\Desktop\Cia\WhatsApp Image 2025-07-22 at 10.02.15_57948b57.jpg" alt="Eyelash Extensions">
+                    <div class="gallery-caption">Volume Eyelash Extensions</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="C:\Users\lebea\OneDrive\Desktop\Cia\nails6.webp" alt="Nail Art">
+                    <div class="gallery-caption">Creative Nail Art</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="C:\Users\lebea\OneDrive\Desktop\Cia\Nails.jpg" alt="Pedicure">
+                    <div class="gallery-caption">Luxury Pedicure</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="C:\Users\lebea\OneDrive\Desktop\Cia\WhatsApp Image 2025-07-22 at 10.02.17_1ee9516e.jpg" alt="Makeup">
+                    <div class="gallery-caption">Professional Makeup</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="C:\Users\lebea\OneDrive\Desktop\Cia\WhatsApp Image 2025-07-22 at 10.02.17_b68cf27b.jpg">
+                    <div class="gallery-caption">Elegant Hair Braiding</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Booking Section -->
+    <section class="booking" id="booking">
+        <div class="container">
+            <div class="section-title">
+                <h2>Book Appointment</h2>
+            </div>
+            <div class="section-subtitle">
+                Reserve your exclusive beauty experience with us
+            </div>
+            
+            <div class="booking-container">
+                <div class="booking-image"></div>
+                <div class="booking-form">
+                    <div id="formMessage" class="form-message"></div>
+                    <form id="appointmentForm">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="name">Full Name</label>
+                                <input type="text" id="name" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="phone">Phone Number</label>
+                                <input type="tel" id="phone" required>
+                            </div>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="email">Email Address</label>
+                                <input type="email" id="email" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="date">Preferred Date</label>
+                                <input type="date" id="date" required>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="service">Select Service</label>
+                            <select id="service" required>
+                                <option value="">Choose a service</option>
+                                <option value="Acrylic Nails">Acrylic Nails</option>
+                                <option value="Acrylic French">Acrylic French</option>
+                                <option value="Acrylic Ombre">Acrylic Ombre</option>
+                                <option value="Nails Combo">Nails Combo</option>
+                                <option value="Individual Eyelashes">Individual Eyelashes</option>
+                                <option value="Hair & Makeup">Hair & Makeup</option>
+                                <option value="Gel Manicure">Gel Manicure</option>
+                                <option value="Gel Pedicure">Gel Pedicure</option>
+                                <option value="Pedicure">Pedicure</option>
+                                <option value="Other Service">Other Service</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="message">Special Requests</label>
+                            <textarea id="message" rows="4" placeholder="Any specific requests or notes for your appointment..."></textarea>
+                        </div>
+                        
+                        <button type="submit" class="btn" id="submitBtn">
+                            <span class="btn-text">Book Appointment</span>
+                            <div class="loading-spinner"></div>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+        <!-- Add this inside your Contact Section, before </section> -->
+    <div class="map-container" style="margin: 40px 0; text-align: center;">
+        <h3>Find Us</h3>
+        <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3605.8315982537!2d30.24160!3d-23.6615!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjPCsDM5JzQxLjQiUyAzMMKwMTQnMjkuOCJF!5e0!3m2!1sen!2sza!4v1640000000000!5m2!1sen!2sza"
+            width="100%"
+            height="350"
+            style="border:0; border-radius:12px;"
+            allowfullscreen=""
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade">
+        </iframe>
+        <p style="margin-top: 10px; color: var(--medium-grey); font-size: 0.9rem;">
+            📍 Coordinates: 23°39'41.4"S 30°14'29.8"E
+        </p>
+    </div>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <div class="section-title">
+                <h2>Contact Us</h2>
+            </div>
+            
+            <div class="contact-info">
+                <div class="contact-card">
+                    <div class="contact-icon">
+                        <i class="fas fa-phone-alt"></i>
+                    </div>
+                    <h3>Call Us</h3>
+                    <p>For appointments and inquiries</p>
+                    <p><a href="tel:0731946745">073 194 6745</a></p>
+                </div>
+                
+                <div class="contact-card">
+                    <div class="contact-icon">
+                        <i class="fab fa-instagram"></i>
+                    </div>
+                    <h3>Instagram</h3>
+                    <p>Follow us for updates</p>
+                    <p><a href="https://www.instagram.com/cia_beauty_bar/?utm_source=ig_web_button_share_sheet" target="_blank">@Cia's Beauty Bar</a></p>
+                </div>
+                
+                <div class="contact-card">
+                    <div class="contact-icon">
+                        <i class="fab fa-facebook-f"></i>
+                    </div>
+                    <h3>Facebook</h3>
+                    <p>For hair & makeup services</p>
+                    <p><a href="https://www.facebook.com/treciaskgaugelo.chokwe.7" target="_blank">Trecias Kgau</a></p>
+                </div>
+                
+                <div class="contact-card">
+                    <div class="contact-icon">
+                        <i class="fab fa-whatsapp"></i>
+                    </div>
+                    <h3>WhatsApp</h3>
+                    <p>Message us for appointments and inquiries</p>
+                    <p><a href="https://wa.me/27731946745" target="_blank">073 194 6745</a></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>Cia's Beauty Bar</h3>
+                    <p>Premium beauty services in a luxurious setting. Experience the perfect blend of elegance and professionalism.</p>
+                    <div class="social-links">
+                        <a href="https://instagram.com/ciasbeautybar" target="_blank"><i class="fab fa-instagram"></i></a>
+                        <a href="https://facebook.com/TreciasKgau" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                        <a href="tel:0731946745"><i class="fas fa-phone-alt"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#services">Services</a></li>
+                        <li><a href="#gallery">Gallery</a></li>
+                        <li><a href="#booking">Book Appointment</a></li>
+                        <li><a href="#contact">Contact Us</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Business Hours</h3>
+                    <p>Monday - Friday: 9:00 AM - 7:00 PM</p>
+                    <p>Saturday: 9:00 AM - 5:00 PM</p>
+                    <p>Sunday: Closed</p>
+                    <p class="appointment-note" style="display: inline-block; margin-top: 15px; padding: 8px 15px; font-size: 0.9rem;">Strictly by Appointment Only</p>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                &copy; 2025 Cia's Beauty Bar. All rights reserved.
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Supabase Configuration
+        const SUPABASE_URL = 'https://pqeyjgiiyonajtabmsku.supabase.co';
+        const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InBxZXlqZ2lpeW9uYWp0YWJtc2t1Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTMyODA1NDQsImV4cCI6MjA2ODg1NjU0NH0.svGQNBQWP5_Iw0eCmPoaXPXChu1QPaWGUee2Wl2h680'; // Replace with your actual anon key
+        const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
+        // EmailJS Configuration
+        // Initialize EmailJS with your public key
+        emailjs.init("YOUR_PUBLIC_KEY"); // Replace with your EmailJS public key
+        
+        console.log('📧 EmailJS booking system ready');
+
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const navMenu = document.getElementById('navMenu');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+        });
+        
+        // Utility Functions
+        function showMessage(message, type = 'success') {
+            const messageEl = document.getElementById('formMessage');
+            messageEl.textContent = message;
+            messageEl.className = `form-message ${type} show`;
+            
+            // Auto hide after 5 seconds
+            setTimeout(() => {
+                messageEl.classList.remove('show');
+            }, 5000);
+        }
+
+        function setLoading(loading) {
+            const submitBtn = document.getElementById('submitBtn');
+            const form = document.getElementById('appointmentForm');
+            
+            if (loading) {
+                submitBtn.classList.add('loading');
+                form.style.pointerEvents = 'none';
+            } else {
+                submitBtn.classList.remove('loading');
+                form.style.pointerEvents = 'auto';
+            }
+        }
+
+        // Form Submission with EmailJS
+        const appointmentForm = document.getElementById('appointmentForm');
+        
+        appointmentForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            // Show loading state
+            setLoading(true);
+            
+            try {
+                // Get form values
+                const formData = {
+                    from_name: document.getElementById('name').value.trim(),
+                    phone: document.getElementById('phone').value.trim(),
+                    email: document.getElementById('email').value.trim(),
+                    preferred_date: document.getElementById('date').value,
+                    service: document.getElementById('service').value,
+                    message: document.getElementById('message').value.trim() || 'No special requests',
+                    to_name: "Cia's Beauty Bar"
+                };
+
+                // Validate required fields
+                if (!formData.from_name || !formData.phone || !formData.email || 
+                    !formData.preferred_date || !formData.service) {
+                    throw new Error('Please fill in all required fields.');
+                }
+
+                // Send email using EmailJS
+                const response = await emailjs.send(
+                    'YOUR_SERVICE_ID',      // Replace with your EmailJS service ID
+                    'YOUR_TEMPLATE_ID',     // Replace with your EmailJS template ID
+                    formData
+                );
+
+                if (response.status !== 200) {
+                    throw new Error('Failed to send email');
+                }
+
+                // Success
+                showMessage(
+                    `🎉 Thank you ${formData.from_name}! Your ${formData.service} appointment request has been sent to our email. We will contact you shortly to confirm.`,
+                    'success'
+                );
+                
+                // Reset form
+                appointmentForm.reset();
+                
+            } catch (error) {
+                console.error('Booking error:', error);
+                
+                // User-friendly error message
+                showMessage(
+                    `❌ Sorry, there was an error sending your appointment request. Please try again or call us directly at 073 194 6745.`,
+                    'error'
+                );
+            } finally {
+                // Remove loading state
+                setLoading(false);
+            }
+        });
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+                
+                // Close mobile menu if open
+                navMenu.classList.remove('active');
+            });
+        });
+
+        // Scroll Animation Observer
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        // Observe all elements with animation classes
+        document.addEventListener('DOMContentLoaded', () => {
+            const animatedElements = document.querySelectorAll('.fade-in, .slide-left, .slide-right, .scale-up');
+            animatedElements.forEach(element => {
+                observer.observe(element);
+            });
+        });
+
+        // Enhanced hero scroll effects
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const hero = document.querySelector('.hero');
+            const heroHeight = hero ? hero.offsetHeight : 0;
+            
+            if (hero && heroHeight > 0) {
+                // Calculate scroll progress through hero section
+                const scrollProgress = Math.min(scrolled / heroHeight, 1);
+                
+                // Subtle parallax effect (reduced from 0.5 to 0.2)
+                hero.style.transform = `translateY(${scrolled * 0.2}px)`;
+                
+                // Fade out hero as user scrolls past it
+                if (scrollProgress > 0.3) {
+                    hero.classList.add('fade-out');
+                } else {
+                    hero.classList.remove('fade-out');
+                }
+                
+                // Completely hide hero when scrolled past
+                if (scrollProgress > 0.8) {
+                    hero.style.opacity = '0';
+                } else if (scrollProgress <= 0.3) {
+                    hero.style.opacity = '1';
+                }
+            }
+        });
+
+        // Add floating animation to appointment note
+        const style = document.createElement('style');
+        style.textContent = `
+            .appointment-note {
+                animation: float 3s ease-in-out infinite;
+            }
+            
+            @keyframes float {
+                0%, 100% { transform: translateY(0px); }
+                50% { transform: translateY(-10px); }
+            }
+        `;
+        document.head.appendChild(style);
+    </script>
+</body>
+</html>
